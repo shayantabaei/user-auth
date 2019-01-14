@@ -1,3 +1,49 @@
-<p>
-  registration works!
-</p>
+<div class="container">
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()" novalidate>
+      <mat-form-field>
+          <input matInput placeholder="First Name" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput placeholder="Last Name" type="text">
+      </mat-form-field>
+
+      <!-- <mat-form-field> -->
+          <!-- Datepicker for DOB -->
+      <!-- </mat-form-field> -->
+
+      <div formGroupName="emailGroup">
+          <mat-form-field>
+              <input matInput placeholder="Enter your email" type="email" formControlName="email" required>
+              <mat-error>{{errors.email}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="Confirm your email" type="email" formControlName="confirmEmail" [errorStateMatcher]="confirmValidParentMatcher" required>
+              <mat-error>{{this.registrationForm.get('passwordGroup').get('confirmPassword').value.length == 0 ? errors.required : errors.confirmEmail}}</mat-error>
+          </mat-form-field>
+      </div>
+
+      <mat-form-field>
+          <input matInput placeholder="User Name" formControlName="userName" type="text">
+          <mat-error>{{this.registrationForm.get('userName').hasError('minlength') || this.registrationForm.get('userName').hasError('maxlength')
+             ? errors.userName : errors.required}}</mat-error>
+      </mat-form-field>
+
+      <div formGroupName="passwordGroup">
+
+          <mat-form-field>
+              <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <!-- <mat-error>{{this.registrationForm.get('password').hasError('pattern') ? errors.password : errors.required}}</mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field>
+              <input matInput placeholder="Enter your password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher" [type]="hide ? 'password' : 'text'">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error>{{this.registrationForm.get('passwordGroup').get('confirmPassword').hasError('required') ? errors.required : errors.required}}</mat-error>
+          </mat-form-field>
+
+      </div>
+    
+  </form>
+  </div>

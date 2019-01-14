@@ -3,6 +3,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -79,6 +80,7 @@ import { MatAutocompleteModule,
         MatTooltipModule,
         MatTreeModule,
         ScrollingModule,
+        MatFormFieldModule,
         ],
     exports: [CdkTableModule,
         CdkTreeModule,
@@ -119,6 +121,7 @@ import { MatAutocompleteModule,
         MatTooltipModule,
         MatTreeModule,
         ScrollingModule,
+        MatFormFieldModule,
     ]
 })
 
