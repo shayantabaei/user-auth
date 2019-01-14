@@ -15,11 +15,13 @@
       <div formGroupName="emailGroup">
           <mat-form-field>
               <input matInput placeholder="Enter your email" type="email" formControlName="email" required>
-              <mat-error>{{errors.email}}</mat-error>
+              <mat-error *ngIf="this.registrationForm.get('emailGroup').get('email').value.length == 0">{{errors.required}}</mat-error>
+              <mat-error *ngIf="this.registrationForm.get('emailGroup').get('email').value.length != 0">{{errors.email}}</mat-error>
           </mat-form-field>
           <mat-form-field>
               <input matInput placeholder="Confirm your email" type="email" formControlName="confirmEmail" [errorStateMatcher]="confirmValidParentMatcher" required>
-              <mat-error>{{this.registrationForm.get('passwordGroup').get('confirmPassword').value.length == 0 ? errors.required : errors.confirmEmail}}</mat-error>
+              <mat-error *ngIf="this.registrationForm.get('emailGroup').get('confirmEmail').value.length == 0">{{errors.required}}</mat-error>
+              <mat-error *ngIf="this.registrationForm.get('emailGroup').get('confirmEmail').value.length != 0">{{errors.confirmEmail}}</mat-error>
           </mat-form-field>
       </div>
 
