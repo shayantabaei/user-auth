@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../interfaces/User';
-import { ErrorStateMatcher } from '@angular/material';
 import { CustomValidators, ConfirmValidParentMatcher, regExps, errorMessages } from '../custom-validation';
 
 @Component({
