@@ -40,7 +40,7 @@
           </mat-form-field>
 
           <mat-form-field>
-              <input matInput placeholder="Enter your password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher" [type]="hide ? 'password' : 'text'">
+              <input matInput placeholder="Confirm your password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher" [type]="hide ? 'password' : 'text'">
               <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               <mat-error>{{this.registrationForm.get('passwordGroup').get('confirmPassword').hasError('required') ? errors.required : errors.required}}</mat-error>
           </mat-form-field>
